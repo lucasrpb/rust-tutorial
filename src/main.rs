@@ -1,5 +1,7 @@
 #[allow(dead_code, unused_variables)]
 
+const PI: f64 = 3.14159;
+
 use tokio::time::{sleep, Duration};
 mod mymodule;
 
@@ -36,6 +38,8 @@ async fn fetch_data(id: u32) -> String {
 
     format!("Data for id {}", id)
 }
+
+println!("PI constant: {}", PI);
 
 #[tokio::main]
 async fn main() {
