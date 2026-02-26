@@ -1,3 +1,5 @@
+#[allow(dead_code, unused_variables)]
+
 use tokio::time::{sleep, Duration};
 mod mymodule;
 
@@ -52,6 +54,11 @@ async fn main() {
         [4, 5, 6]
     ];
 
+    println!("slice of array: {:?}", &myarray[1..=4]);
+    println!("last two elements of array: {:?}", &myarray[3..]);
+    println!("first two elements of array: {:?}", &myarray[..2]);
+    println!("slice of vector: {:?}", &m1[0][1..=2]);
+
     println!("My 2D vector is: {:?}", m1);
     print!("My 2D array is: ");
     for row in m2 {
@@ -95,5 +102,57 @@ async fn main() {
     }
 
     mymodule::example().await;
+
+    // "Lucas" is a string literal, which is of type &str (string slice)
+    let t1: (i32, &str, bool) = (2, "Lucas", true);
+
+    // String != &str (string slice), so we need to convert it to String 
+    let t2: (String, f64) = ("Hello".to_string(), 3.14);
+
+    println!("Tuple: {:?}", t1);
+
+    let mut number_slices: [i32; 5] = [1, 2, 3, 4, 5];   
+    
+    number_slices[0] = 11; // This will cause a compile-time error because number_slices is immutable   
+
+    number_slices.iter().for_each(|num| println!("Number: {}", num));
+
+    //println!("Number slices: {:?}", number_slices);
+
+    let chain = Some(2)
+    .map(|x| x * 2);
+
+    println!("Chain result: {:?}", chain);
+
+    // Allocated on the heap, so we can modify it
+    let mut str: String = String::from("Hello, Rust!");
+
+    // allocated on the stack, so we cannot modify it
+    let mut str2: &str = "Hello, Rust!";
+    
+    str += " Welcome to programming."; // This will modify the original string
+
+    //will fail...
+    //str2 += "kkkk";
+
+    println!("String: {}", str);
+
+    enum State {
+        COMMITTED,
+        PEDING
+    };
+
+    let state = State::COMMITTED;
+
+    match state {
+        State::COMMITTED => println!("State is COMMITTED"),
+        State::PEDING => println!("State is PEDING"),
+    };
+
+    if matches!(state, State::COMMITTED) {
+        println!("State is COMMITTED");
+    } else {
+        println!("State is PENDING");
+    }
 
 }
