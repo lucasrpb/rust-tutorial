@@ -167,4 +167,14 @@ async fn main() {
 
     say_hello!();
 
+    let s1: String = String::from("Hello, Rust!");
+    let mut s2: String = s1;
+
+    // it fails because s1 is moved to s2, and s1 is no longer valid after the move
+   // println!("s2: {}", s1);
+
+    let s3: String = s2.clone(); // This creates a new String with the same content as s2
+
+   println!("s2: {}", s2);
+   
 }
