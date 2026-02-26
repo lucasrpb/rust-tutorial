@@ -39,10 +39,10 @@ async fn fetch_data(id: u32) -> String {
     format!("Data for id {}", id)
 }
 
-println!("PI constant: {}", PI);
-
 #[tokio::main]
 async fn main() {
+    println!("PI constant: {}", PI);
+
     let x = 5;
     let mut _myLong : i64 = 10;
     let mut point = Point { x: 10, y: 20 };
@@ -111,7 +111,7 @@ async fn main() {
     let t1: (i32, &str, bool) = (2, "Lucas", true);
 
     // String != &str (string slice), so we need to convert it to String 
-    let t2: (String, f64) = ("Hello".to_string(), 3.14);
+    let _t2: (String, f64) = ("Hello".to_string(), 3.14);
 
     println!("Tuple: {:?}", t1);
 
@@ -132,7 +132,7 @@ async fn main() {
     let mut str: String = String::from("Hello, Rust!");
 
     // allocated on the stack, so we cannot modify it
-    let mut str2: &str = "Hello, Rust!";
+    let mut _str2: &str = "Hello, Rust!";
     
     str += " Welcome to programming."; // This will modify the original string
 
@@ -144,7 +144,7 @@ async fn main() {
     enum State {
         COMMITTED,
         PEDING
-    };
+    }
 
     let state = State::COMMITTED;
 
